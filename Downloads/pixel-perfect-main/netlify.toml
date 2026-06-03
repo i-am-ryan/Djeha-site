@@ -1,5 +1,5 @@
 [build]
-  command = "vite build"
+  command = "npm install && vite build"
   publish = ".output/public"
 
 [build.environment]
@@ -7,10 +7,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/index.html"
   status = 200
-
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
