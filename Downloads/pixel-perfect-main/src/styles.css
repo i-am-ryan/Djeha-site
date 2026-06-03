@@ -1,0 +1,140 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * DJAY Photography — cream editorial design system.
+ * All colors warm neutrals. No accents, no gold. Light-mode only.
+ */
+
+@theme inline {
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* DJAY semantic tokens */
+  --color-dj-bg: var(--dj-bg);
+  --color-dj-bg2: var(--dj-bg2);
+  --color-dj-bg3: var(--dj-bg3);
+  --color-dj-surface: var(--dj-surface);
+  --color-dj-border: var(--dj-border);
+  --color-dj-border2: var(--dj-border2);
+  --color-dj-warm: var(--dj-warm);
+  --color-dj-mid: var(--dj-mid);
+  --color-dj-charcoal: var(--dj-charcoal);
+  --color-dj-ink: var(--dj-ink);
+  --color-dj-dark: var(--dj-dark);
+
+  --font-playfair: "Playfair Display", serif;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-inter: "Inter", sans-serif;
+
+  --animate-ken-burns: kenBurns 12s ease-in-out infinite alternate;
+  --animate-float: float 4s ease-in-out infinite;
+
+  @keyframes kenBurns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+}
+
+:root {
+  --radius: 0px;
+
+  --dj-bg: #F5F0E8;
+  --dj-bg2: #EDE8DE;
+  --dj-bg3: #E5DFD3;
+  --dj-surface: #FDFAF5;
+  --dj-border: #D8D0C0;
+  --dj-border2: #C8BFB0;
+  --dj-warm: #8A8478;
+  --dj-mid: #5C5750;
+  --dj-charcoal: #2C2825;
+  --dj-ink: #1A1714;
+  --dj-dark: #1E1C1A;
+
+  --background: var(--dj-bg);
+  --foreground: var(--dj-charcoal);
+  --card: var(--dj-surface);
+  --card-foreground: var(--dj-charcoal);
+  --popover: var(--dj-surface);
+  --popover-foreground: var(--dj-charcoal);
+  --primary: var(--dj-ink);
+  --primary-foreground: var(--dj-bg);
+  --secondary: var(--dj-bg2);
+  --secondary-foreground: var(--dj-charcoal);
+  --muted: var(--dj-bg2);
+  --muted-foreground: var(--dj-warm);
+  --accent: var(--dj-bg3);
+  --accent-foreground: var(--dj-charcoal);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #F5F0E8;
+  --border: var(--dj-border);
+  --input: var(--dj-border);
+  --ring: var(--dj-charcoal);
+}
+
+html { scroll-behavior: smooth; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  body {
+    background-color: var(--dj-bg);
+    color: var(--dj-charcoal);
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--dj-charcoal); color: var(--dj-bg); }
+
+  ::-webkit-scrollbar { width: 3px; height: 3px; }
+  ::-webkit-scrollbar-track { background: var(--dj-bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--dj-border2); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--dj-warm); }
+
+  @media (pointer: fine) {
+    body, a, button { cursor: none; }
+  }
+
+
+}
+
+@layer utilities {
+  .font-playfair { font-family: var(--font-playfair); }
+  .font-cormorant { font-family: var(--font-cormorant); font-style: italic; }
+  .font-inter { font-family: var(--font-inter); }
+
+  .tracking-label { letter-spacing: 0.2em; }
+  .tracking-nav { letter-spacing: 0.1em; }
+
+  .img-desaturate { filter: saturate(0.35) brightness(0.95); transition: filter 600ms ease, transform 600ms ease; }
+  .img-desaturate:hover { filter: saturate(1) brightness(1); }
+}
