@@ -2,6 +2,15 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Camera } from "lucide-react";
 import { BRAND, NAV_LINKS } from "@/lib/data";
 
+function TikTokIcon({ className }: { className?: string }) {
+  const d = "M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z";
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d={d} />
+    </svg>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-dj-dark text-dj-bg">
@@ -15,6 +24,7 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-[1500px] border-t border-white/10 px-6 py-20 lg:px-10">
         <div className="grid gap-12 md:grid-cols-3">
+
           <div>
             <div className="flex items-end gap-2">
               <span className="font-playfair text-xl text-dj-bg" style={{ letterSpacing: "0.15em" }}>
@@ -26,13 +36,40 @@ export function Footer() {
               Capturing moments that last forever.
             </p>
             <div className="mt-6 flex gap-4 text-dj-warm">
-              <a href="#" aria-label="Instagram" className="transition-colors hover:text-dj-bg">
+              <a
+                href="https://www.instagram.com/_djeha_?igsh=cG96NjVzbDMzYWlt"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="transition-colors hover:text-dj-bg"
+              >
                 <Instagram className="h-[18px] w-[18px]" strokeWidth={1.4} />
               </a>
-              <a href="#" aria-label="Facebook" className="transition-colors hover:text-dj-bg">
+              <a
+                href="https://www.facebook.com/share/18wSo1N1U7/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="transition-colors hover:text-dj-bg"
+              >
                 <Facebook className="h-[18px] w-[18px]" strokeWidth={1.4} />
               </a>
-              <a href={BRAND.whatsapp} aria-label="Pixieset" className="transition-colors hover:text-dj-bg">
+              <a
+                href="https://www.tiktok.com/@praise.the.creator"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="TikTok"
+                className="transition-colors hover:text-dj-bg"
+              >
+                <TikTokIcon className="h-[18px] w-[18px]" />
+              </a>
+              <a
+                href={BRAND.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Pixieset Gallery"
+                className="transition-colors hover:text-dj-bg"
+              >
                 <Camera className="h-[18px] w-[18px]" strokeWidth={1.4} />
               </a>
             </div>
@@ -75,6 +112,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 md:flex-row">

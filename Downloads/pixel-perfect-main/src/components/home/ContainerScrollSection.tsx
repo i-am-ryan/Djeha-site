@@ -3,10 +3,19 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const IMAGES = [
-  "/images/Weddings/IMG_3458.JPG",
-  "/images/Portraits/IMG_3519.jpg",
-  "/images/Graduation/DJAY9788.jpg",
-  "/images/Corporate/IMG_3492.JPG",
+  "/images/OurWork/SIM_4806.jpg",
+  "/images/OurWork/SIM_4419.jpg",
+  "/images/OurWork/DJAY0432-Edit.jpg",
+   "/images/OurWork/0T6A0152-Edit.jpg",
+  "/images/OurWork/_DSC0215.jpg",
+  "/images/OurWork/DSC05679.jpg",
+  "/images/OurWork/DSC00823.jpg",
+  "/images/OurWork/IMG_8938-Edit.jpg",
+  "/images/OurWork/SIM_4449.jpg",
+  "/images/OurWork/9V1A0173.jpg",
+  "/images/OurWork/20230905-DSC09253-2.jpg",
+  "/images/OurWork/9V1A2210.jpg",
+  
 ];
 
 const TYPEWRITER_PAIRS = [
@@ -89,15 +98,14 @@ export function ContainerScrollSection() {
           style={{ rotateX: rotate, scale, transformPerspective: 1200 }}
           className="mx-auto mt-14 max-w-[1100px] border border-dj-border2 bg-dj-bg3 p-3 shadow-2xl"
         >
-          <div className="grid grid-cols-2 gap-1 bg-dj-bg">
+       <div className="grid grid-cols-3 gap-[2px]">
             {IMAGES.map((src, i) => (
        <img
                 key={i}
                 src={src}
                 alt=""
                 loading="lazy"
-                className="aspect-square w-full object-cover object-top"
-              />
+className="aspect-square w-full object-cover"  />
             ))}
           </div>
         </motion.div>

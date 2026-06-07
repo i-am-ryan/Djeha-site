@@ -41,8 +41,8 @@ export const CATEGORIES: Category[] = [
     tagline: "Vows, tears, first dances.",
     description:
       "Your wedding day is the most important day of your life. We capture every whispered vow, every joyful tear, every first dance with the grace it deserves.",
-    hero: "/images/Weddings/IMG_3456.JPG",
-    thumb: "/images/Weddings/IMG_3456.JPG",
+    hero: "/images/Weddings/IMG_1897-Edit-2.jpg",
+    thumb: "/images/Weddings/IMG_1255-Edit.jpg",
     stackPhotos: [
       "/images/Weddings/IMG_3453.JPG",
       "/images/Weddings/IMG_3455.JPG",
@@ -53,18 +53,12 @@ export const CATEGORIES: Category[] = [
     gallery: [
       
       "/images/Weddings/IMG_3454.JPG",
-      "/images/Weddings/IMG_3455.JPG",
       "/images/Weddings/IMG_3456.JPG",
-      "/images/Weddings/IMG_3457.JPG",
-      "/images/Weddings/IMG_3458.JPG",
-      "/images/Weddings/IMG_3459.JPG",
-      "/images/Weddings/IMG_3453.JPG",
-      "/images/Weddings/IMG_3460.JPG",
+      "/images/Weddings/IMG_1627-Edit.jpg",
       "/images/Weddings/IMG_3461.JPG",
-      "/images/Weddings/IMG_3462.JPG",
       "/images/Weddings/IMG_3463.JPG",
-      "/images/Weddings/IMG_3464.JPG",
-      "/images/Weddings/IMG_3465.jpg",
+      "/images/Weddings/IMG_1255-Edit.jpg",
+
     ],
   },
  
@@ -76,7 +70,7 @@ export const CATEGORIES: Category[] = [
     description:
       "Years of dedication and sacrifice, finally celebrated. Let us capture the pride, the joy, and the achievement of your graduation day.",
     hero: "https://images.unsplash.com/photo-1627556704302-624286467c65?w=1920&q=85",
-    thumb: "/images/Graduation/DJAY9736.jpg",
+    thumb: "/images/Graduation/IMG_3416.JPG",
     stackPhotos: [
       "/images/Graduation/IMG_3416.JPG",
       "/images/Graduation/DJAY9788.jpg",
@@ -174,8 +168,8 @@ export const CATEGORIES: Category[] = [
     tagline: "Imagery that commands respect.",
     description:
       "From annual galas to product launches, we bring professional polish to every corporate occasion. Imagery that commands respect.",
-    hero: "/images/Corporate/IMG_3488.JPG",
-    thumb: "/images/Corporate/IMG_3488.JPG",
+    hero: "/images/Corporate/SIM_4806.jpg",
+    thumb: "/images/Corporate/3S2A8772.jpg",
     stackPhotos: [
       "/images/Corporate/IMG_3488.JPG",
       "/images/Corporate/IMG_3490.JPG",
@@ -211,8 +205,8 @@ export const CATEGORIES: Category[] = [
     tagline: "Spaces at their absolute finest.",
     description:
       "Properties that photograph beautifully sell faster and for more. Our architectural photography presents every space at its absolute finest.",
-    hero: "/images/RealEstate/IMG_3539.JPG",
-    thumb: "/images/RealEstate/IMG_3533.JPG",
+    hero: "/images/RealEstate/IMG_9325-HDR.jpg",
+    thumb: "/images/RealEstate/IMG_9413-HDR.jpg",
     stackPhotos: [
       "/images/RealEstate/IMG_3533.JPG",
       "/images/RealEstate/IMG_3536.JPG",

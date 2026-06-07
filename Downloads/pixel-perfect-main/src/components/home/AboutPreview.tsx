@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
+import { AdminPhotoSlot } from "@/components/gallery/AdminPhotoSlot";
+import { useSlots } from "@/lib/useImageSlots";
+import { ABOUT_PREVIEW_MAIN, ABOUT_PREVIEW_FLOAT1, ABOUT_PREVIEW_FLOAT2 } from "@/lib/imageSlots";
 
 const STATS = [
   { n: "500+", l: "Events" },
@@ -8,6 +11,12 @@ const STATS = [
 ];
 
 export function AboutPreview() {
+  const slots = useSlots();
+
+  const mainSrc = slots[ABOUT_PREVIEW_MAIN.slotKey] ?? ABOUT_PREVIEW_MAIN.defaultSrc;
+  const float1Src = slots[ABOUT_PREVIEW_FLOAT1.slotKey] ?? ABOUT_PREVIEW_FLOAT1.defaultSrc;
+  const float2Src = slots[ABOUT_PREVIEW_FLOAT2.slotKey] ?? ABOUT_PREVIEW_FLOAT2.defaultSrc;
+
   return (
     <section className="bg-dj-bg2 py-24 md:py-32">
       <div className="mx-auto grid max-w-[1300px] items-center gap-16 px-6 md:grid-cols-2 lg:px-10">
@@ -33,12 +42,7 @@ export function AboutPreview() {
             {STATS.map((s) => (
               <div key={s.l}>
                 <div className="font-playfair text-[40px] text-dj-ink">{s.n}</div>
-                <div
-                  className="mt-1 font-inter text-[11px] uppercase text-dj-warm"
-                  style={{ letterSpacing: "0.15em" }}
-                >
-                  {s.l}
-                </div>
+                <div className="mt-1 font-inter text-[11px] uppercase text-dj-warm" style={{ letterSpacing: "0.15em" }}>{s.l}</div>
               </div>
             ))}
           </div>
@@ -58,28 +62,33 @@ export function AboutPreview() {
           transition={{ duration: 0.9 }}
           className="relative"
         >
-<img
-            src="/images/Portraits/IMG_3512.JPG"
+          <AdminPhotoSlot
+            slotKey={ABOUT_PREVIEW_MAIN.slotKey}
+            src={mainSrc}
+            className="ml-auto block aspect-[3/4] w-[80%] border border-dj-border overflow-hidden"
+            imgClassName="w-full h-full object-cover object-top"
             alt="Portrait photography"
-            loading="lazy"
-            className="ml-auto block aspect-[3/4] w-[80%] border border-dj-border object-cover object-top"
           />
-          <motion.img
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            src="/images/Portraits/IMG_3516.JPG"
-            alt="Portrait photography"
-            loading="lazy"
-            className="absolute -bottom-8 -left-4 z-10 hidden aspect-square w-[44%] border border-dj-border object-cover object-top sm:block"
-          />
-          <motion.img
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity }}
-            src="/images/Portraits/IMG_3515.JPG"
-            alt="Portrait photography"
-            loading="lazy"
-            className="absolute -top-8 left-2 z-10 hidden aspect-square w-[36%] border border-dj-border object-cover object-top sm:block"
-          />
+          <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity }}
+            className="absolute -bottom-8 -left-4 z-10 hidden sm:block">
+            <AdminPhotoSlot
+              slotKey={ABOUT_PREVIEW_FLOAT1.slotKey}
+              src={float1Src}
+              className="aspect-square w-[140px] border border-dj-border overflow-hidden"
+              imgClassName="w-full h-full object-cover object-top"
+              alt="Portrait photography"
+            />
+          </motion.div>
+          <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 5.5, repeat: Infinity }}
+            className="absolute -top-8 left-2 z-10 hidden sm:block">
+            <AdminPhotoSlot
+              slotKey={ABOUT_PREVIEW_FLOAT2.slotKey}
+              src={float2Src}
+              className="aspect-square w-[120px] border border-dj-border overflow-hidden"
+              imgClassName="w-full h-full object-cover object-top"
+              alt="Portrait photography"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>

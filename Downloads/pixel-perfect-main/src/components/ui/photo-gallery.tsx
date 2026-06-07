@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { motion, useMotionValue } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { AdminPhotoSlot } from "@/components/gallery/AdminPhotoSlot";
 
 type Direction = "left" | "right";
 
@@ -11,12 +11,14 @@ function getRandomRotation(min: number, max: number, direction: Direction) {
 
 function Photo({
   src,
+  slotKey,
   alt,
   direction,
   width,
   height,
 }: {
   src: string;
+  slotKey: string;
   alt: string;
   direction: Direction;
   width: number;
@@ -42,11 +44,12 @@ function Photo({
       draggable={false}
     >
       <div className="relative h-full w-full overflow-hidden shadow-lg" style={{ borderRadius: 16 }}>
-        <img
+        <AdminPhotoSlot
+          slotKey={slotKey}
           src={src}
+          className="h-full w-full"
+          imgClassName="h-full w-full object-cover"
           alt={alt}
-          draggable={false}
-          className="h-full w-full object-cover"
         />
       </div>
     </motion.div>
@@ -60,9 +63,13 @@ interface PhotoItem {
 
 export function PhotoGallery({
   photos,
+  categoryKey = "weddings",
+  slotPrefix = "stack",
   animationDelay = 0.3,
 }: {
   photos: PhotoItem[];
+  categoryKey?: string;
+  slotPrefix?: string;
   animationDelay?: number;
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -72,7 +79,6 @@ export function PhotoGallery({
     return () => clearTimeout(t);
   }, [animationDelay]);
 
-  // Build positions for up to 5 photos
   const positions = [
     { x: "-320px", y: "15px",  zIndex: 50, direction: "left"  as Direction },
     { x: "-160px", y: "32px",  zIndex: 40, direction: "left"  as Direction },
@@ -85,6 +91,7 @@ export function PhotoGallery({
     ...p,
     ...positions[i],
     order: i,
+    slotKey: `${categoryKey}-${slotPrefix}-${i}`,
   }));
 
   return (
@@ -113,6 +120,7 @@ export function PhotoGallery({
               >
                 <Photo
                   src={photo.src}
+                  slotKey={photo.slotKey}
                   alt={photo.alt ?? ""}
                   direction={photo.direction}
                   width={220}

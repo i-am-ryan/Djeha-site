@@ -11,29 +11,25 @@ export function Hero() {
       {/* All content centered in one block */}
       <div className="relative z-10 mx-auto flex max-w-[900px] flex-col items-center px-6 text-center">
 
-        {/* "Grace." slides in from the LEFT */}
-        <div className="overflow-hidden">
-          <motion.h1
-            initial={{ x: -120, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-playfair text-[64px] leading-[0.9] text-white md:text-[88px] lg:text-[120px]"
-          >
-            Grace.
-          </motion.h1>
-        </div>
+        {/* "Djay." slides in from the LEFT */}
+        <motion.h1
+          initial={{ x: -120, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+className="font-playfair text-[48px] leading-[1.0] text-white md:text-[88px] lg:text-[120px] uppercase"
+        >
+          Djay's
+        </motion.h1>
 
-        {/* "Precision." slides in from the RIGHT */}
-        <div className="overflow-hidden">
-          <motion.h1
-            initial={{ x: 120, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.38, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-playfair text-[64px] leading-[0.9] text-dj-warm md:text-[88px] lg:text-[120px]"
-          >
-            Precision.
-          </motion.h1>
-        </div>
+        {/* "Photography." slides in from the RIGHT */}
+        <motion.h1
+          initial={{ x: 120, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.38, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+className="font-playfair text-[48px] leading-[1.0] text-white md:text-[88px] lg:text-[120px] uppercase"
+        >
+          Photography
+        </motion.h1>
 
         {/* Divider line */}
         <motion.div
@@ -43,24 +39,22 @@ export function Hero() {
           className="mt-8 h-px w-24 origin-center bg-white/30"
         />
 
-        {/* Subtitle slides in from the RIGHT */}
+        {/* Subtitle */}
         <motion.p
           initial={{ x: 60, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 font-cormorant text-[22px] text-white/70 md:text-[26px]"
-        >
+className="mt-6 font-cormorant text-[26px] text-white/90 md:text-[36px] uppercase"   >
           Capturing the essence of your most important moments.
         </motion.p>
 
-        {/* Buttons fade up */}
+        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.8 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          {/* View Portfolio — fills dark on hover */}
           <Link
             to="/weddings"
             className="group relative overflow-hidden bg-white px-8 py-3.5 font-inter text-[11px] uppercase text-dj-ink"
@@ -72,7 +66,6 @@ export function Hero() {
             <span className="absolute inset-0 translate-y-full bg-dj-ink transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0" />
           </Link>
 
-          {/* Book A Session — fills white on hover */}
           <Link
             to="/contact"
             className="group relative overflow-hidden border border-white/50 px-8 py-3.5 font-inter text-[11px] uppercase text-white"
@@ -102,8 +95,6 @@ export function Hero() {
       >
         <ChevronDown className="h-5 w-5" strokeWidth={1.2} />
       </motion.div>
-
- 
     </section>
   );
 }

@@ -1,9 +1,11 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { useAdmin } from "@/context/AdminContext";
 
 export interface PhotoStackItem {
   src: string;
   name: string;
+  slotKey?: string;
 }
 
 export interface InteractivePhotoStackProps {
@@ -51,20 +53,23 @@ function InteractivePhotoStack({
   className,
   ...props
 }: InteractivePhotoStackProps) {
+  const { isAdmin } = useAdmin();
   const [topCardIndex, setTopCardIndex] = React.useState(0);
   const [isGroupHovered, setIsGroupHovered] = React.useState(false);
   const [clickedIndex, setClickedIndex] = React.useState<number | null>(null);
   const [spreadTransforms, setSpreadTransforms] = React.useState<string[]>([]);
+  const [srcs, setSrcs] = React.useState<string[]>(items.map((i) => i.src));
 
   const displayed = items.slice(0, 5);
   const baseRotations = ["rotate-2", "-rotate-2", "rotate-4", "-rotate-4", "rotate-6"];
 
-  const handleMouseEnter = () => {
+const handleMouseEnter = () => {
     setSpreadTransforms(generateNonOverlappingTransforms(items));
     setIsGroupHovered(true);
   };
 
-  const handleCardClick = (index: number) => {
+const handleCardClick = (index: number) => {
+    if (isAdmin) return;
     if (isGroupHovered) {
       setClickedIndex(index);
       setTimeout(() => {
@@ -76,6 +81,19 @@ function InteractivePhotoStack({
       setTopCardIndex(index);
     }
   };
+
+  async function handleUpload(file: File, index: number, slotKey: string) {
+    try {
+      const { uploadImage, saveSlot } = await import("@/lib/supabase");
+      const { setSlotOverride } = await import("@/lib/useImageSlots");
+      const url = await uploadImage(file, slotKey);
+      await saveSlot(slotKey, url);
+      setSlotOverride(slotKey, url);
+      setSrcs((prev) => prev.map((s, i) => (i === index ? url : s)));
+    } catch {
+      alert("Upload failed.");
+    }
+  }
 
   return (
     <div
@@ -90,7 +108,7 @@ function InteractivePhotoStack({
         }}
       >
         <div className="relative left-1/2 top-1/2 h-80 w-64 -translate-x-1/2 -translate-y-1/2">
-          {displayed.map((item: PhotoStackItem, index: number) => {
+          {displayed.map((item, index) => {
             const isTopCard = index === topCardIndex;
             const numItems = displayed.length;
             let stackPos = index - topCardIndex;
@@ -99,6 +117,8 @@ function InteractivePhotoStack({
             const transform = isGroupHovered
               ? (spreadTransforms[index] ?? "")
               : `translateY(${stackPos * 0.5}rem) scale(${1 - stackPos * 0.05})`;
+
+            const slotKey = item.slotKey ?? `stack-${index}`;
 
             return (
               <div
@@ -115,10 +135,29 @@ function InteractivePhotoStack({
                 }}
               >
                 <img
-                  src={item.src}
+                  src={srcs[index] ?? item.src}
                   alt={item.name}
                   className="h-full w-full object-cover"
                 />
+                {isAdmin && (
+                  <>
+                    <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center border border-dashed border-white/60 bg-black/30">
+                      <span className="font-inter text-[9px] uppercase text-white" style={{ letterSpacing: "0.15em" }}>
+                        Replace
+                      </span>
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="absolute inset-0 z-30 cursor-pointer opacity-0"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleUpload(file, index, slotKey);
+                        e.target.value = "";
+                      }}
+                    />
+                  </>
+                )}
               </div>
             );
           })}
@@ -127,7 +166,7 @@ function InteractivePhotoStack({
 
       {title && (
         <p className="text-center font-inter text-[12px] uppercase text-dj-warm" style={{ letterSpacing: "0.2em" }}>
-          {title}
+          {isAdmin ? "Click any card to replace" : title}
         </p>
       )}
     </div>

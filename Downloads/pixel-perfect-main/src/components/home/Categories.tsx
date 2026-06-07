@@ -3,16 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { CATEGORIES } from "@/lib/data";
 
-const CLIP: Record<string, string | undefined> = {
-  weddings: "polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 15% 100%, 0% 85%)",
-  graduations: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-  prom: "polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%)",
-  "real-estate": "polygon(0% 15%, 50% 0%, 100% 15%, 100% 100%, 0% 100%)",
-};
-
-const RADIUS: Record<string, string | undefined> = {
-  portraits: "50% 50% 50% 50% / 55% 55% 45% 45%",
-};
+const CLIP: Record<string, string | undefined> = {};
+const RADIUS: Record<string, string | undefined> = {};
 
 const ROTATING_PHRASES = [
   "Every Occasion, Perfectly Captured.",
@@ -77,13 +69,14 @@ export function Categories() {
                     borderRadius: RADIUS[c.key],
                   }}
                 >
-                  <img
+              <img
                     src={c.thumb}
                     alt={c.label}
                     loading="lazy"
-                    className="img-desaturate h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                    style={{ filter: "saturate(0.9) brightness(1.0)" }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                 </div>
 
 {/* Text — outside clip, always visible */}

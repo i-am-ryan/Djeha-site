@@ -9,7 +9,7 @@ const TESTIMONIALS = [
     rating: 5,
     quote:
       "Djeha captured our wedding day beyond our wildest dreams. Every smile, every tear, every dance move — preserved forever. We didn't just get photos, we got memories that will outlive us.",
-    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80",
+    
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const TESTIMONIALS = [
     rating: 5,
     quote:
       "The corporate event photos were stunning. Our client was blown away by the quality. Djeha is the only photographer we'll ever use for our events.",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80",
+    
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const TESTIMONIALS = [
     rating: 5,
     quote:
       "My graduation portraits are absolutely breathtaking. Djeha has an incredible ability to make you feel at ease while creating art. Every frame is perfect.",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80",
+    
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const TESTIMONIALS = [
     rating: 5,
     quote:
       "Every prom photo looked like it came straight from a magazine. My daughter cried happy tears when she saw them. Worth every cent.",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80",
+    
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const TESTIMONIALS = [
     rating: 5,
     quote:
       "The real estate photos sold our property in 3 days. The quality was extraordinary — every room looked its absolute best. Truly world-class work.",
-    avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=200&q=80",
+    
   },
 ];
 
@@ -132,11 +132,7 @@ export function Testimonials() {
                         "{t.quote}"
                       </blockquote>
                       <div className="mt-8 flex items-center gap-3 border-t border-dj-border pt-6">
-                        <img
-                          src={t.avatar}
-                          alt={t.name}
-                          className="h-12 w-12 rounded-full object-cover"
-                        />
+                      
                         <div>
                           <p className="font-playfair text-[15px] text-dj-ink">{t.name}</p>
                           <p
